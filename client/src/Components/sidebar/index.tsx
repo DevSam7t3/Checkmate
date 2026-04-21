@@ -102,8 +102,8 @@ export const Sidebar = () => {
 						);
 					})}
 				</List>
-				<StarPrompt />
-				<List
+				{/* <StarPrompt /> */}
+				{/* <List
 					component="nav"
 					disablePadding
 					sx={{ px: theme.spacing(LAYOUT.SM) }}
@@ -119,7 +119,7 @@ export const Sidebar = () => {
 							/>
 						);
 					})}
-				</List>
+				</List> */}
 				<Divider sx={{ borderColor: theme.palette.divider }} />
 
 				<AuthFooter
