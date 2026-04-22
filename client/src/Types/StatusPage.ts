@@ -51,3 +51,30 @@ export interface StatusPageResponse {
 	statusPage: StatusPage;
 	monitors: Monitor[];
 }
+
+export interface PublicMonitorDetailSummary {
+	uptimePercentage: number;
+	slaTier: "Platinum" | "Gold" | "Silver" | "Bronze";
+	risk: "Low" | "Medium" | "High";
+	lastCheckAt: string | null;
+	latency: {
+		latest: number | null;
+		average: number | null;
+		trimmedAverage: number | null;
+	};
+	recentTimeline: {
+		windowSize: number;
+		healthy: number;
+		degraded: number;
+		pending: number;
+		down: number;
+		maintenance: number;
+		incidents: number;
+	};
+}
+
+export interface PublicMonitorDetailResponse {
+	statusPage: StatusPage;
+	monitor: Monitor & { checks?: Monitor["recentChecks"] };
+	summary: PublicMonitorDetailSummary;
+}

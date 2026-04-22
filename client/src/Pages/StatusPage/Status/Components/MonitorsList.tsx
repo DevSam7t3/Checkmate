@@ -23,6 +23,7 @@ import {
 import { alpha, useTheme, type Theme } from "@mui/material/styles";
 import { useSelector } from "react-redux";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import type { Monitor } from "@/Types/Monitor";
 import type { StatusPage } from "@/Types/StatusPage";
 import type { RootState } from "@/Types/state";
@@ -488,16 +489,21 @@ const AvailabilityStrip = ({ monitor }: { monitor: StatusPageMonitor }) => {
 
 const MonitorHeader = ({
 	monitor,
+	statusPageUrl,
 	showURL,
 	showUptime,
 }: {
 	monitor: StatusPageMonitor;
+	statusPageUrl: string;
 	showURL: boolean;
 	showUptime: boolean;
 }) => {
 	const theme = useTheme();
+	const location = useLocation();
+	const isPublic = location.pathname.startsWith("/status/public");
 	const statusColor = getStatusColor(monitor.status, theme);
 	const StatusIcon = getStatusIcon(monitor.status);
+	const detailPath = `/status/public/${statusPageUrl}/${monitor.id}`;
 
 	return (
 		<Stack
@@ -532,7 +538,16 @@ const MonitorHeader = ({
 							fontWeight: 700,
 						}}
 					>
-						{monitor.name}
+						{isPublic ? (
+							<Link
+								to={detailPath}
+								style={{ color: "inherit", textDecoration: "none" }}
+							>
+								{monitor.name}
+							</Link>
+						) : (
+							monitor.name
+						)}
 					</Typography>
 					{/* <Typography
 						variant="caption"
@@ -866,6 +881,7 @@ export const MonitorsList = ({ statusPage, monitors }: MonitorsListProps) => {
 				>
 					<MonitorHeader
 						monitor={monitor}
+						statusPageUrl={statusPage.url}
 						showURL={showURL}
 						showUptime={statusPage.showUptimePercentage}
 					/>

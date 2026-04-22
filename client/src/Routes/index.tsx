@@ -30,6 +30,7 @@ import Incidents from "@/Pages/Incidents";
 import CreateStatus from "@/Pages/StatusPage/Create/";
 import StatusPages from "@/Pages/StatusPage/StatusPages";
 import Status from "@/Pages/StatusPage/Status";
+import PublicMonitorDetailsPage from "@/Pages/StatusPage/Status/PublicMonitorDetails";
 
 import Notifications from "@/Pages/Notifications";
 import CreateNotifications from "@/Pages/Notifications/create";
@@ -231,6 +232,11 @@ const Routes = () => {
 				path="/set-new-password/:token"
 				element={<AuthSetNewPassword />}
 			/>
+			<Route
+				path="/status/public/:url/:monitorId"
+				element={<PublicMonitorDetailsPage />}
+			/>
+
 			<Route
 				path="/status/public/:url"
 				element={<Status />}
