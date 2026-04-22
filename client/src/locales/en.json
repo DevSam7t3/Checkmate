@@ -402,13 +402,13 @@
 					"serviceIsDown": "Service is down"
 				},
 				"status": {
-					"down": "down",
-					"breached": "threshold exceeded",
-					"initializing": "initializing",
-					"maintenance": "maintenance",
-					"paused": "paused",
-					"total": "total",
-					"up": "up"
+					"down": "Down",
+					"breached": "Threshold Exceeded",
+					"initializing": "Initializing",
+					"maintenance": "Maintenance",
+					"paused": "Paused",
+					"total": "Total",
+					"up": "Up"
 				},
 				"monitorTypes": {
 					"optionDocker": "Docker",

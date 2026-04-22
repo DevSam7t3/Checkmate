@@ -21,7 +21,7 @@ import { ILogger } from "@/utils/logger.js";
 import { IBufferService } from "./bufferService.js";
 import type { HardwareStatusMetrics } from "@/types/network.js";
 const SERVICE_NAME = "StatusService";
-const MAX_RECENT_CHECKS = 25;
+const MAX_RECENT_CHECKS = 100;
 const HARDWARE_ALERT_COUNTER_START = 5;
 const HARDWARE_METRIC_KEYS = ["cpu", "memory", "disk", "temp"] as const;
 type HardwareMetricKey = (typeof HARDWARE_METRIC_KEYS)[number];
