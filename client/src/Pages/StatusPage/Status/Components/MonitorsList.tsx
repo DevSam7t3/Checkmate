@@ -846,7 +846,7 @@ export const MonitorsList = ({ statusPage, monitors }: MonitorsListProps) => {
 	const showURL = useSelector((state: RootState) => state.ui?.showURL);
 
 	return (
-		<Stack gap={theme.spacing(2.2)}>
+		<Stack gap={theme.spacing(10)}>
 			{monitors.map((monitor) => (
 				<BaseBox
 					key={monitor.id}
