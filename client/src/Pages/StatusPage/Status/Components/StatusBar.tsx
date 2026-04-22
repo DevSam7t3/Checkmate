@@ -8,7 +8,6 @@ import {
 	Wrench,
 	type LucideIcon,
 } from "lucide-react";
-import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 import { useTranslation } from "react-i18next";
@@ -16,7 +15,6 @@ import { Box, useTheme } from "@mui/material";
 import type { Theme } from "@mui/material";
 import type { Monitor, MonitorStatus } from "@/Types/Monitor";
 import { useEffect, useState } from "react";
-import { cn } from "@/Utils/cn";
 
 interface StatusDisplay {
 	icon: LucideIcon;
