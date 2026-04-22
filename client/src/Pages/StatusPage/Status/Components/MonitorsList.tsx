@@ -123,37 +123,34 @@ const getLatencyStats = (checks: StatusPageMonitor["checks"]) => {
 	return { latest, average, trimmedAverage };
 };
 
-const getResponseThresholds = (checks: StatusPageMonitor["checks"]) => {
-	const responseTimes =
-		checks
-			?.filter((check) => check.status === true)
-			.map((check) => check.responseTime)
-			.filter((value): value is number => typeof value === "number") ?? [];
+const sortChecksByCreatedAt = (checks?: StatusPageMonitor["checks"]) => {
+	if (!checks?.length) return [];
 
-	if (!responseTimes.length) {
-		return { p75: 0, p95: 0 };
-	}
+	return [...checks].sort((a, b) => {
+		const aTime = dayjs(a.createdAt).valueOf();
+		const bTime = dayjs(b.createdAt).valueOf();
 
-	const sorted = [...responseTimes].sort((a, b) => a - b);
-	const p75 = sorted[Math.floor(sorted.length * 0.75)] ?? sorted[sorted.length - 1];
-	const p95 = sorted[Math.floor(sorted.length * 0.95)] ?? sorted[sorted.length - 1];
+		if (Number.isNaN(aTime) && Number.isNaN(bTime)) return 0;
+		if (Number.isNaN(aTime)) return 1;
+		if (Number.isNaN(bTime)) return -1;
 
-	return { p75, p95 };
+		return aTime - bTime;
+	});
 };
 
 const resolveHeartbeatState = (
 	check: MonitorCheck,
-	thresholds: { p75: number; p95: number }
+	monitorStatus: StatusPageMonitor["status"]
 ) => {
 	if (!check.status) {
 		return "offline" as const;
 	}
 
-	if (check.responseTime > thresholds.p95) {
+	if (monitorStatus === "maintenance") {
 		return "maintenance" as const;
 	}
 
-	if (check.responseTime > thresholds.p75) {
+	if (monitorStatus === "paused" || monitorStatus === "initializing") {
 		return "pending" as const;
 	}
 
@@ -227,7 +224,7 @@ const UptimeRing = ({ monitor }: { monitor: StatusPageMonitor }) => {
 const AvailabilityStrip = ({ monitor }: { monitor: StatusPageMonitor }) => {
 	const theme = useTheme();
 	const { t } = useTranslation();
-	const checks = useMemo(() => monitor.checks?.slice().reverse() ?? [], [monitor.checks]);
+	const checks = useMemo(() => sortChecksByCreatedAt(monitor.checks), [monitor.checks]);
 	const targetVisibleBars = 100;
 
 	// Keep latency stats focused on recent samples to avoid older checks skewing averages.
@@ -259,11 +256,6 @@ const AvailabilityStrip = ({ monitor }: { monitor: StatusPageMonitor }) => {
 		() => getLatencyStats(recentChecksForStats),
 		[recentChecksForStats]
 	);
-	const thresholds = useMemo(
-		() => getResponseThresholds(recentChecksForStats),
-		[recentChecksForStats]
-	);
-
 	const legendItems = [
 		{
 			key: "online",
@@ -292,7 +284,7 @@ const AvailabilityStrip = ({ monitor }: { monitor: StatusPageMonitor }) => {
 			return theme.palette.action.hover;
 		}
 
-		const state = resolveHeartbeatState(bar as MonitorCheck, thresholds);
+		const state = resolveHeartbeatState(bar as MonitorCheck, monitor.status);
 
 		const color = legendItems.find((item) => item.key === state)?.color;
 		return color ?? theme.palette.success.main;
@@ -303,7 +295,7 @@ const AvailabilityStrip = ({ monitor }: { monitor: StatusPageMonitor }) => {
 			return t("pages.common.monitors.status.initializing");
 		}
 
-		const state = resolveHeartbeatState(bar as MonitorCheck, thresholds);
+		const state = resolveHeartbeatState(bar as MonitorCheck, monitor.status);
 
 		if (state === "online") return t("pages.common.monitors.status.up");
 		if (state === "pending") return t("pages.common.monitors.status.initializing");
@@ -324,7 +316,7 @@ const AvailabilityStrip = ({ monitor }: { monitor: StatusPageMonitor }) => {
 				responseTime: check.responseTime,
 				createdAt: check.createdAt,
 			})),
-		[bars, monitor.id, thresholds, t, theme.palette]
+		[bars, monitor.id, monitor.status, t, theme.palette]
 	);
 
 	return (
@@ -600,7 +592,7 @@ const MonitorContent = ({
 	const { t } = useTranslation();
 	const [selectedRange, setSelectedRange] = useState<RangeKey>("50-points");
 
-	const checks = useMemo(() => monitor.checks?.slice().reverse() ?? [], [monitor.checks]);
+	const checks = useMemo(() => sortChecksByCreatedAt(monitor.checks), [monitor.checks]);
 
 	const availableRanges = useMemo(
 		() =>
