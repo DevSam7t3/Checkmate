@@ -21,6 +21,10 @@ interface ResponseTimeStats {
 	avg: number | string;
 }
 
+interface PlaceholderCheck {
+	status: "placeholder";
+}
+
 const DEFAULT_HEIGHT = 50;
 
 const calculateResponseTimeStats = (checks: CheckSnapshot[]): ResponseTimeStats => {
@@ -56,10 +60,17 @@ export const HistogramResponseTime = ({
 
 	if (!Array.isArray(checks) || checks.length === 0) return null;
 
-	const data =
-		checks.length !== 25
-			? [...checks, ...Array(25 - checks.length).fill({ status: "placeholder" })]
-			: checks;
+	const latestChecks = checks.slice(-25);
+
+	let data: Array<CheckSnapshot | PlaceholderCheck>;
+	if (latestChecks.length !== 25) {
+		const placeholders = Array(25 - latestChecks.length).fill({
+			status: "placeholder" as const,
+		});
+		data = [...latestChecks, ...placeholders];
+	} else {
+		data = latestChecks;
+	}
 
 	const chartHeight = typeof height === "number" ? `${height}px` : height;
 	const gridGap = gap ?? theme.spacing(0.5);
