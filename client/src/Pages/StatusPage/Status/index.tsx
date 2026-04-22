@@ -1,4 +1,8 @@
-import { BasePage, BaseFallback } from "@/Components/design-elements";
+import {
+	BasePage,
+	BaseFallback,
+	MaintenanceStatusBox,
+} from "@/Components/design-elements";
 import { StatusBar } from "@/Pages/StatusPage/Status/Components/StatusBar";
 import { MonitorsList } from "@/Pages/StatusPage/Status/Components/MonitorsList";
 import Typography from "@mui/material/Typography";
@@ -13,6 +17,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useGet } from "@/Hooks/UseApi";
 import type { StatusPageResponse } from "@/Types/StatusPage";
 import { HeaderStatusPageControls } from "./Components/HeaderStatusPageControls";
+import MaintenanceAlert from "./Components/MaintenanceAlert";
 
 const StatusPageView = () => {
 	const theme = useTheme();
@@ -76,6 +81,8 @@ const StatusPageView = () => {
 		? `data:${statusPage.logo.contentType};base64,${statusPage.logo.data}`
 		: null;
 
+	const underMaintenance = monitors.filter((m) => m.status === "maintenance");
+
 	return (
 		<BasePage
 			loading={isLoading}
@@ -102,7 +109,13 @@ const StatusPageView = () => {
 					}}
 				/>
 			)}
+
 			<StatusBar monitors={monitors} />
+
+			{underMaintenance.map((m) => (
+				<MaintenanceAlert monitor={m} />
+			))}
+
 			<MonitorsList
 				statusPage={statusPage}
 				monitors={monitors}
