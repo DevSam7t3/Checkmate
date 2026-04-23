@@ -3,11 +3,11 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@/Components/design-elements";
 import { Button } from "@/Components/inputs";
-import { Settings, ExternalLink } from "lucide-react";
+import { Settings, ExternalLink, ChevronLeft } from "lucide-react";
 
 import { useTheme } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import type { StatusPage } from "@/Types/StatusPage";
 
 interface HeaderStatusPageControlsProps {
@@ -23,6 +23,7 @@ export const HeaderStatusPageControls = ({
 	const theme = useTheme();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
+
 	return (
 		<Stack
 			direction={"row"}
@@ -35,16 +36,41 @@ export const HeaderStatusPageControls = ({
 				gap={theme.spacing(4)}
 				alignItems="baseline"
 			>
-				<Typography
-					variant="h1"
-					overflow="hidden"
-					textOverflow="ellipsis"
-					sx={{
-						maxWidth: { xs: "200px", sm: "100%" },
-					}}
-				>
-					{statusPage?.companyName}
-				</Typography>
+				<Stack spacing={5}>
+					<Typography
+						variant="h1"
+						overflow="hidden"
+						textOverflow="ellipsis"
+						sx={{
+							maxWidth: { xs: "200px", sm: "100%" },
+						}}
+					>
+						{statusPage?.companyName}
+					</Typography>
+					<Stack
+						direction="row"
+						spacing={2}
+						sx={{
+							alignItems: "center",
+							textDecoration: "underline",
+							cursor: "pointer",
+							color: "gray",
+							transition: "all 0.3s ease",
+							":hover": {
+								color: "white",
+							},
+						}}
+					>
+						<ChevronLeft size={14} />
+						<Typography
+							onClick={() => {
+								navigate(-1);
+							}}
+						>
+							{t("components.headerStatusPageControls.goBack")}
+						</Typography>
+					</Stack>
+				</Stack>
 				{statusPage?.isPublished && !isPublic && (
 					<>
 						<Typography
@@ -72,7 +98,7 @@ export const HeaderStatusPageControls = ({
 					</>
 				)}
 			</Stack>
-			{isAdmin && !isPublic && (
+			{isAdmin && (
 				<Button
 					variant="contained"
 					color="secondary"
