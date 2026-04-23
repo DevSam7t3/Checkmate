@@ -17,6 +17,7 @@ import { useTheme } from "@mui/material/styles";
 import dayjs from "dayjs";
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const formatMetric = (value: number | null, suffix: string) => {
 	if (value == null || Number.isNaN(value)) return "--";
@@ -34,6 +35,8 @@ const getRiskColor = (risk: "Low" | "Medium" | "High") => {
 
 const PublicMonitorDetailsPage = () => {
 	const theme = useTheme();
+	const { t } = useTranslation();
+
 	const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 	const isAdmin = useIsAdmin();
 	const [searchValue, setSearchValue] = useState("");
@@ -46,10 +49,26 @@ const PublicMonitorDetailsPage = () => {
 	const monitor = data?.monitor;
 	const summary = data?.summary;
 
-	const lastCheckText = useMemo(() => {
-		if (!summary?.lastCheckAt) return "No check data yet";
-		return dayjs(summary.lastCheckAt).format("YYYY-MM-DD HH:mm:ss");
-	}, [summary?.lastCheckAt]);
+	const lastCheckText = () => {
+		if (!summary?.lastCheckAt)
+			return t(
+				"pages.statusPage.publicMonitorDetails.lastCheckUnavailable",
+				"No check data yet"
+			);
+		return t("pages.statusPage.publicMonitorDetails.lastCheck", "Last check: {{time}}", {
+			time: dayjs(summary.lastCheckAt).format("YYYY-MM-DD HH:mm:ss"),
+		});
+	};
+
+	const lastReports = () => {
+		const fallback = `Last {{windowSize}} checks include {{incidents}} degraded events and {{health}} healthy events.`;
+
+		return t("pages.statusPage.publicMonitorDetails.lastReport", fallback, {
+			windowSize: summary?.recentTimeline?.windowSize || 0,
+			incidents: summary?.recentTimeline?.incidents || 0,
+			health: summary?.recentTimeline?.healthy || 0,
+		});
+	};
 
 	const logoSrc = statusPage?.logo?.data
 		? `data:${statusPage.logo.contentType};base64,${statusPage.logo.data}`
@@ -190,10 +209,11 @@ const PublicMonitorDetailsPage = () => {
 							}}
 						>
 							<Box>
-								<Typography sx={cardTitleSx}>Service Overview</Typography>
+								<Typography sx={cardTitleSx}>
+									{t("pages.statusPage.publicMonitorDetails.serviceOverview")}
+								</Typography>
 								<Typography sx={sectionDescriptionSx}>
-									A descriptive summary of this monitor based on current uptime and
-									heartbeat behavior.
+									{t("pages.statusPage.publicMonitorDetails.serviceDescription")}
 								</Typography>
 							</Box>
 							<Stack
@@ -225,19 +245,19 @@ const PublicMonitorDetailsPage = () => {
 							}}
 						>
 							<Typography sx={bodyCopySx}>
-								This service is healthy and responding normally based on the latest
-								heartbeat.
+								{t("pages.statusPage.publicMonitorDetails.serviceHealthReport")}
 							</Typography>
 							<Typography sx={bodyCopySx}>
-								{monitor.name} is configured as a {monitor.type} monitor.
+								{t("pages.statusPage.publicMonitorDetails.monitorType", {
+									name: monitor.name,
+									type: monitor.type,
+								})}
 							</Typography>
 							<Typography sx={bodyCopySx}>
-								Last check: {lastCheckText}. Last {summary.recentTimeline.windowSize}{" "}
-								checks include {summary.recentTimeline.incidents} degraded events and{" "}
-								{summary.recentTimeline.healthy} healthy events.
+								{lastCheckText()}. {lastReports()}
 							</Typography>
 							<Typography sx={bodyCopySx}>
-								Latency is stable with no meaningful drift in recent checks.
+								{t("pages.statusPage.publicMonitorDetails.latencyReport")}
 							</Typography>
 						</Stack>
 					</BaseBox>
@@ -260,7 +280,9 @@ const PublicMonitorDetailsPage = () => {
 							height: "100%",
 						}}
 					>
-						<Typography sx={cardTitleSx}>Key Metrics</Typography>
+						<Typography sx={cardTitleSx}>
+							{t("pages.statusPage.publicMonitorDetails.metrics.title")}
+						</Typography>
 						<Stack
 							divider={<Divider />}
 							sx={{ mt: 2 }}
@@ -270,7 +292,9 @@ const PublicMonitorDetailsPage = () => {
 								justifyContent="space-between"
 								py={1.2}
 							>
-								<Typography sx={metricLabelSx}>24h Uptime</Typography>
+								<Typography sx={metricLabelSx}>
+									24h {t("pages.statusPage.publicMonitorDetails.metrics.uptime")}
+								</Typography>
 								<Chip
 									label={formatUptime(summary.uptimePercentage)}
 									color="secondary"
@@ -283,7 +307,9 @@ const PublicMonitorDetailsPage = () => {
 								justifyContent="space-between"
 								py={1.2}
 							>
-								<Typography sx={metricLabelSx}>SLA Tier</Typography>
+								<Typography sx={metricLabelSx}>
+									{t("pages.statusPage.publicMonitorDetails.metrics.slaTier")}
+								</Typography>
 								<Chip
 									label={summary.slaTier}
 									color="secondary"
@@ -297,7 +323,9 @@ const PublicMonitorDetailsPage = () => {
 								justifyContent="space-between"
 								py={1.2}
 							>
-								<Typography sx={metricLabelSx}>Latest Latency</Typography>
+								<Typography sx={metricLabelSx}>
+									{t("pages.statusPage.publicMonitorDetails.metrics.latestLatency")}
+								</Typography>
 								<Chip
 									label={formatMetric(summary.latency.latest, " ms")}
 									color="success"
@@ -311,7 +339,9 @@ const PublicMonitorDetailsPage = () => {
 								justifyContent="space-between"
 								py={1.2}
 							>
-								<Typography sx={metricLabelSx}>Average Latency</Typography>
+								<Typography sx={metricLabelSx}>
+									{t("pages.statusPage.publicMonitorDetails.metrics.averageLatency")}
+								</Typography>
 								<Chip
 									label={formatMetric(summary.latency.average, " ms")}
 									color="success"
@@ -325,7 +355,9 @@ const PublicMonitorDetailsPage = () => {
 								justifyContent="space-between"
 								py={1.2}
 							>
-								<Typography sx={metricLabelSx}>Trimmed Average</Typography>
+								<Typography sx={metricLabelSx}>
+									{t("pages.statusPage.publicMonitorDetails.metrics.trimmedAverage")}
+								</Typography>
 								<Chip
 									label={formatMetric(summary.latency.trimmedAverage, " ms")}
 									color="success"
@@ -361,7 +393,7 @@ const PublicMonitorDetailsPage = () => {
 								pb: 6,
 							}}
 						>
-							Endpoint Details
+							{t("pages.statusPage.publicMonitorDetails.endpoint.title")}
 						</Typography>
 						<Stack
 							spacing={0}
@@ -371,7 +403,9 @@ const PublicMonitorDetailsPage = () => {
 								pt: 2,
 							}}
 						>
-							<Typography sx={endpointLabelSx}>Monitor Name</Typography>
+							<Typography sx={endpointLabelSx}>
+								{t("pages.statusPage.publicMonitorDetails.endpoint.monitorName")}
+							</Typography>
 							<Typography
 								sx={{
 									...endpointValueSx,
@@ -380,7 +414,9 @@ const PublicMonitorDetailsPage = () => {
 							>
 								{monitor.name}
 							</Typography>
-							<Typography sx={endpointLabelSx}>Monitor Type</Typography>
+							<Typography sx={endpointLabelSx}>
+								{t("pages.statusPage.publicMonitorDetails.endpoint.monitorType")}
+							</Typography>
 							<Typography
 								sx={{
 									...endpointValueSx,
@@ -389,7 +425,9 @@ const PublicMonitorDetailsPage = () => {
 							>
 								{monitor.type}
 							</Typography>
-							<Typography sx={endpointLabelSx}>Target</Typography>
+							<Typography sx={endpointLabelSx}>
+								{t("pages.statusPage.publicMonitorDetails.endpoint.target")}
+							</Typography>
 							<Typography
 								sx={{
 									...endpointValueSx,
@@ -397,16 +435,20 @@ const PublicMonitorDetailsPage = () => {
 									mb: 5,
 								}}
 							>
-								{monitor.url ?? "Not provided for this monitor type"}
+								{monitor.url ??
+									t("pages.statusPage.publicMonitorDetails.endpoint.noTarget")}
 							</Typography>
-							<Typography sx={endpointLabelSx}>Tags</Typography>
+							<Typography sx={endpointLabelSx}>
+								{t("pages.statusPage.publicMonitorDetails.endpoint.tags")}
+							</Typography>
 							<Typography
 								sx={{
 									...endpointValueSx,
 									mb: 5,
 								}}
 							>
-								{monitor.group ?? "No tags assigned"}
+								{monitor.group ??
+									t("pages.statusPage.publicMonitorDetails.endpoint.noTags")}
 							</Typography>
 						</Stack>
 					</BaseBox>
@@ -436,7 +478,7 @@ const PublicMonitorDetailsPage = () => {
 								pb: 6,
 							}}
 						>
-							Recent Timeline Summary
+							{t("pages.statusPage.publicMonitorDetails.timeline.title")}
 						</Typography>
 
 						<Stack
@@ -447,8 +489,9 @@ const PublicMonitorDetailsPage = () => {
 							gap={8}
 						>
 							<Typography sx={{ ...bodyCopySx, mt: 2 }}>
-								This panel summarizes the most recent {summary.recentTimeline.windowSize}{" "}
-								heartbeat checks so incidents and instability are easier to spot quickly.
+								{t("pages.statusPage.publicMonitorDetails.timeline.description", {
+									windowSize: summary.recentTimeline.windowSize,
+								})}
 							</Typography>
 							<BaseBox
 								sx={{
@@ -473,18 +516,27 @@ const PublicMonitorDetailsPage = () => {
 											color: "text.secondary",
 										}}
 									>
-										SERVICE RELIABILITY RISK
+										{t("pages.statusPage.publicMonitorDetails.timeline.risk.title")}
 									</Typography>
 									<Chip
-										label={summary.risk}
+										label={t(
+											"pages.statusPage.publicMonitorDetails.timeline.risk." +
+												summary.risk.toLowerCase(),
+											summary.risk
+										)}
 										color={riskColor}
 										size="small"
 										sx={{ "& .MuiChip-label": { fontWeight: 500 } }}
 									/>
 								</Stack>
 								<Typography sx={{ ...bodyCopySx, mt: 1 }}>
-									Behavior is consistently stable with {summary.risk.toLowerCase()}{" "}
-									short-term reliability risk.
+									{t("pages.statusPage.publicMonitorDetails.timeline.risk.description", {
+										risk: t(
+											"pages.statusPage.publicMonitorDetails.timeline.risk." +
+												summary.risk.toLowerCase(),
+											summary.risk
+										),
+									})}
 								</Typography>
 							</BaseBox>
 
@@ -503,7 +555,9 @@ const PublicMonitorDetailsPage = () => {
 											background: "rgba(34,197,94,0.08)",
 										}}
 									>
-										<Typography sx={endpointLabelSx}>Healthy</Typography>
+										<Typography sx={endpointLabelSx}>
+											{t("pages.statusPage.publicMonitorDetails.timeline.healthy")}
+										</Typography>
 										<Typography
 											sx={{ fontSize: "1.125rem", fontWeight: 600, lineHeight: 1.3 }}
 										>
@@ -521,7 +575,9 @@ const PublicMonitorDetailsPage = () => {
 											background: "rgba(239,68,68,0.08)",
 										}}
 									>
-										<Typography sx={endpointLabelSx}>Down</Typography>
+										<Typography sx={endpointLabelSx}>
+											{t("pages.statusPage.publicMonitorDetails.timeline.down")}
+										</Typography>
 										<Typography
 											sx={{ fontSize: "1.125rem", fontWeight: 600, lineHeight: 1.3 }}
 										>
@@ -539,7 +595,9 @@ const PublicMonitorDetailsPage = () => {
 											background: "rgba(245,158,11,0.08)",
 										}}
 									>
-										<Typography sx={endpointLabelSx}>Pending</Typography>
+										<Typography sx={endpointLabelSx}>
+											{t("pages.statusPage.publicMonitorDetails.timeline.degraded")}
+										</Typography>
 										<Typography
 											sx={{ fontSize: "1.125rem", fontWeight: 600, lineHeight: 1.3 }}
 										>
@@ -557,7 +615,9 @@ const PublicMonitorDetailsPage = () => {
 											background: "rgba(59,130,246,0.08)",
 										}}
 									>
-										<Typography sx={endpointLabelSx}>Maintenance</Typography>
+										<Typography sx={endpointLabelSx}>
+											{t("pages.statusPage.publicMonitorDetails.timeline.maintenance")}
+										</Typography>
 										<Typography
 											sx={{ fontSize: "1.125rem", fontWeight: 600, lineHeight: 1.3 }}
 										>
