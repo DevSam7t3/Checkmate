@@ -135,7 +135,8 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": ""
+			"publicLink": "Veřejný odkaz",
+			"goBack": "Zpět"
 		},
 		"headerTimeRange": {
 			"labels": {

@@ -135,7 +135,8 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": "公開連結"
+			"publicLink": "公開連結",
+			"goBack": "返回"
 		},
 		"headerTimeRange": {
 			"labels": {

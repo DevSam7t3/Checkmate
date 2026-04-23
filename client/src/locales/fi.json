@@ -135,7 +135,8 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": "Julkinen linkki"
+			"publicLink": "Julkinen linkki",
+			"goBack": "Takaisin"
 		},
 		"headerTimeRange": {
 			"labels": {

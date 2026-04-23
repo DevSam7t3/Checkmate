@@ -135,7 +135,8 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": "Herkese açık bağlantı"
+			"publicLink": "Herkese açık bağlantı",
+			"goBack": "Geri dön"
 		},
 		"headerTimeRange": {
 			"labels": {

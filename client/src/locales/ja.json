@@ -135,7 +135,8 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": "公開リンク"
+			"publicLink": "公開リンク",
+			"goBack": "戻る"
 		},
 		"headerTimeRange": {
 			"labels": {

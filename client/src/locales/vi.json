@@ -135,7 +135,8 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": ""
+			"publicLink": "Liên kết công khai",
+			"goBack": "Quay lại"
 		},
 		"headerTimeRange": {
 			"labels": {

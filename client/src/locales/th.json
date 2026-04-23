@@ -135,7 +135,8 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": "ลิงก์สาธารณะ"
+			"publicLink": "ลิงก์สาธารณะ",
+			"goBack": "กลับ"
 		},
 		"headerTimeRange": {
 			"labels": {

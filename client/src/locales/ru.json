@@ -135,7 +135,8 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": "Публичная ссылка"
+			"publicLink": "Публичная ссылка",
+			"goBack": "Назад"
 		},
 		"headerTimeRange": {
 			"labels": {

@@ -135,7 +135,8 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": "Public link"
+			"publicLink": "Public link",
+            "goBack": "Go Back"
 		},
 		"headerTimeRange": {
 			"labels": {

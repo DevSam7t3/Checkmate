@@ -7,7 +7,7 @@ import { Settings, ExternalLink, ChevronLeft } from "lucide-react";
 
 import { useTheme } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import type { StatusPage } from "@/Types/StatusPage";
 
 interface HeaderStatusPageControlsProps {

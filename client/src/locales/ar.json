@@ -135,7 +135,8 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": ""
+			"publicLink": "الرابط العام",
+			"goBack": "العودة"
 		},
 		"headerTimeRange": {
 			"labels": {
