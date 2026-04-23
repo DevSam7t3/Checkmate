@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import dayjs from "dayjs";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const formatMetric = (value: number | null, suffix: string) => {
@@ -36,15 +36,11 @@ const PublicMonitorDetailsPage = () => {
 	const theme = useTheme();
 	const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 	const isAdmin = useIsAdmin();
-	console.log("Rendering PublicMonitorDetailsPage with isAdmin:", isAdmin);
+	const [searchValue, setSearchValue] = useState("");
 	const { url, monitorId } = useParams();
 	const apiUrl = url && monitorId ? `/status-page/${url}/monitor/${monitorId}` : null;
 
-	const { data, isLoading, error } = useGet<PublicMonitorDetailResponse>(
-		apiUrl,
-		{},
-		{ refreshInterval: 10000 }
-	);
+	const { data, isLoading, error, refetch } = useGet<PublicMonitorDetailResponse>(apiUrl);
 
 	const statusPage = data?.statusPage;
 	const monitor = data?.monitor;
@@ -86,6 +82,12 @@ const PublicMonitorDetailsPage = () => {
 			</BasePage>
 		);
 	}
+
+	const filteredMonitor =
+		searchValue.trim().length > 0 &&
+		!monitor.name?.toLowerCase().includes(searchValue.trim().toLowerCase())
+			? []
+			: [monitor];
 
 	const riskColor = getRiskColor(summary.risk);
 	const cardTitleSx = {
@@ -132,6 +134,8 @@ const PublicMonitorDetailsPage = () => {
 				isAdmin={isAdmin}
 				statusPage={statusPage}
 				isPublic
+				onSearchChange={setSearchValue}
+				onRefreshNow={refetch}
 			/>
 
 			{logoSrc && (
@@ -151,7 +155,7 @@ const PublicMonitorDetailsPage = () => {
 
 			<MonitorsList
 				statusPage={statusPage}
-				monitors={[monitor]}
+				monitors={filteredMonitor}
 			/>
 
 			<Grid

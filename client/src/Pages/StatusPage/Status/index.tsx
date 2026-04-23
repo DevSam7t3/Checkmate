@@ -1,8 +1,4 @@
-import {
-	BasePage,
-	BaseFallback,
-	MaintenanceStatusBox,
-} from "@/Components/design-elements";
+import { BasePage, BaseFallback } from "@/Components/design-elements";
 import { StatusBar } from "@/Pages/StatusPage/Status/Components/StatusBar";
 import { MonitorsList } from "@/Pages/StatusPage/Status/Components/MonitorsList";
 import Typography from "@mui/material/Typography";
@@ -11,6 +7,7 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 
 import { useMediaQuery, useTheme } from "@mui/material";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useIsAdmin } from "@/Hooks/useIsAdmin";
 import { useLocation, useParams } from "react-router-dom";
@@ -27,19 +24,20 @@ const StatusPageView = () => {
 	const location = useLocation();
 	const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 	const isPublic = location.pathname.startsWith("/status/public");
+	const [searchValue, setSearchValue] = useState("");
 
 	const apiUrl = url ? `/status-page/${url}?type=uptime&type=infrastructure` : null;
 
-	const { data, isLoading, error } = useGet<StatusPageResponse>(
-		apiUrl,
-		{},
-		{
-			refreshInterval: 10000,
-		}
-	);
+	const { data, isLoading, error, refetch } = useGet<StatusPageResponse>(apiUrl);
 
 	const statusPage = data?.statusPage;
 	const monitors = data?.monitors ?? [];
+	const filteredMonitors = useMemo(() => {
+		const query = searchValue.trim().toLowerCase();
+		if (!query) return monitors;
+
+		return monitors.filter((monitor) => monitor.name?.toLowerCase().includes(query));
+	}, [monitors, searchValue]);
 
 	if (!statusPage) return null;
 
@@ -94,6 +92,8 @@ const StatusPageView = () => {
 				isAdmin={isAdmin}
 				statusPage={statusPage}
 				isPublic={isPublic}
+				onSearchChange={setSearchValue}
+				onRefreshNow={refetch}
 			/>
 			{logoSrc && (
 				<Box
@@ -118,7 +118,7 @@ const StatusPageView = () => {
 
 			<MonitorsList
 				statusPage={statusPage}
-				monitors={monitors}
+				monitors={filteredMonitors}
 			/>
 		</BasePage>
 	);
