@@ -18,6 +18,12 @@ import dayjs from "dayjs";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import useSWR from "swr";
+import IncidentDetails, { type Incident } from "../Components/IncidentCard";
+
+type IncidentResponse = {
+	incidents: Incident[];
+};
 
 const formatMetric = (value: number | null, suffix: string) => {
 	if (value == null || Number.isNaN(value)) return "--";
@@ -49,6 +55,20 @@ const PublicMonitorDetailsPage = () => {
 	const monitor = data?.monitor;
 	const summary = data?.summary;
 
+	const {
+		data: incidentsData,
+		error: incidentError,
+		isLoading: incidentsLoading,
+	} = useSWR<IncidentResponse>(
+		monitor?.name
+			? `http://10.10.10.184:8000/status/incidents/${monitor?.name}/?limit=3`
+			: null,
+		(url: any) => {
+			const res = fetch(url).then((res) => res.json());
+			return res;
+		}
+	);
+
 	const lastCheckText = () => {
 		if (!summary?.lastCheckAt)
 			return t(
@@ -76,6 +96,7 @@ const PublicMonitorDetailsPage = () => {
 
 	const contentPadding = {
 		paddingTop: theme.spacing(20),
+		paddingBottom: theme.spacing(20),
 		paddingLeft: isSmall ? "5vw" : "20vw",
 		paddingRight: isSmall ? "5vw" : "20vw",
 		background: "#000000",
@@ -175,6 +196,7 @@ const PublicMonitorDetailsPage = () => {
 			<MonitorsList
 				statusPage={statusPage}
 				monitors={filteredMonitor}
+				isDetailsPage={true}
 			/>
 
 			<Grid
@@ -630,6 +652,26 @@ const PublicMonitorDetailsPage = () => {
 					</BaseBox>
 				</Grid>
 			</Grid>
+
+			<Stack>
+				<Typography variant="h6">Incidents</Typography>
+				<Stack>
+					{incidentsLoading && <Typography>Loading incidents...</Typography>}
+					{incidentError && (
+						<Typography color="error">Error loading incidents</Typography>
+					)}
+					{incidentsData &&
+						incidentsData?.incidents &&
+						incidentsData?.incidents?.map((incident) => (
+							<IncidentDetails
+								key={incident.id}
+								incident={incident}
+								monitor={monitor}
+								url={url || ""}
+							/>
+						))}
+				</Stack>
+			</Stack>
 		</BasePage>
 	);
 };

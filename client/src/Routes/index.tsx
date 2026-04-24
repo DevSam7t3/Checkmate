@@ -50,6 +50,7 @@ import Logs from "@/Pages/Logs";
 import { ProtectedRoute, RoleProtectedRoute } from "@/Components/routing/RouteProtected";
 
 import CreateMonitor from "@/Pages/CreateMonitor";
+import IncidentDetailsPage from "@/Pages/StatusPage/Status/IncidentDetail";
 
 const Routes = () => {
 	return (
@@ -235,6 +236,11 @@ const Routes = () => {
 			<Route
 				path="/status/public/:url/:monitorId"
 				element={<PublicMonitorDetailsPage />}
+			/>
+
+			<Route
+				path="/status/public/incident/:monitor/:id"
+				element={<IncidentDetailsPage />}
 			/>
 
 			<Route
