@@ -136,7 +136,11 @@
 		},
 		"headerStatusPageControls": {
 			"publicLink": "Public link",
-            "goBack": "Go Back"
+			"goBack": "Go Back",
+			"searchPlaceholder": "Search monitors...",
+			"lastRefresh": "Last refresh",
+			"refreshIn": "Refresh in",
+			"refreshNow": "Refresh now"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "Incident",
+			"started": "Started",
+			"resolved": "Resolved",
+			"duration": "Duration",
+			"updates": "Updates",
+			"impact": "Impact",
+			"timeline": "timeline",
+			"noUpdates": "No updates yet.",
+			"status": {
+				"title": "Status",
+				"investigating": "Investigating",
+				"identified": "Identified",
+				"monitoring": "Monitoring",
+				"resolved": "Resolved",
+				"latest": "Latest"
+			},
+			"severity": {
+				"critical": "Critical",
+				"high": "High",
+				"medium": "Medium",
+				"low": "Low"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "Service Overview",
+				"serviceDescription": "A descriptive summary of this monitor based on current uptime and heartbeat behavior.",
+				"monitorType": "{{name}} is configured as a {{type}} monitor.",
+				"lastCheckUnavailable": "No Check data yet.",
+				"lastCheck": "Last Check: {{time}}",
+				"lastReport": "Last {{windowSize}} checks include {{incidents}} degraded events and {{health}} healthy events.",
+				"latencyReport": "Latency is stable with no meaningful drift in recent checks.",
+				"serviceHealthReport": "This service is healthy and responding normally based on the latest heartbeat.",
+				"metrics": {
+					"title": "Key Metrics",
+					"uptime": "Uptime",
+					"slaTier": "SLA tier",
+					"latestLatency": "Latest latency",
+					"averageLatency": "Average latency",
+					"trimmedAverage": "Trimmed Average"
+				},
+				"endpoint": {
+					"title": "Endpoint Details",
+					"monitorName": "Monitor Name",
+					"monitorType": "Monitor Type",
+					"target": "Target",
+					"noTarget": "Not provided for this monitor type",
+					"tags": "Tags",
+					"noTags": "No tags assigned"
+				},
+				"timeline": {
+					"title": "Recent Timeline Summary",
+					"description": "This panel summarizes the most recent {{windowSize}}  heartbeat checks so incidents and instability are easier to spot quickly.",
+					"risk": {
+						"title": "SERVICE RELIABILITY RISK",
+						"description": "Behavior is consistently stable with {{risk}} short-term reliability risk.",
+						"low": "Low",
+						"medium": "Medium",
+						"high": "High"
+					},
+					"healthy": "Healthy",
+					"down": "Down",
+					"degraded": "Degraded",
+					"maintenance": "Maintenance"
+				}
+			}
+		},
 		"notFound": {
 			"title": "Oh no!  You dropped your sushi!",
 			"subtitle": "Either the URL doesn’t exist, or you don’t have access to it."

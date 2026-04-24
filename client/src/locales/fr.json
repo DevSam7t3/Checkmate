@@ -136,7 +136,11 @@
 		},
 		"headerStatusPageControls": {
 			"publicLink": "Lien public",
-			"goBack": "Retour"
+			"goBack": "Retour",
+			"searchPlaceholder": "Rechercher des moniteurs...",
+			"lastRefresh": "Dernière actualisation",
+			"refreshIn": "Actualisation dans",
+			"refreshNow": "Actualiser maintenant"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "Incident",
+			"started": "Démarré",
+			"resolved": "Résolu",
+			"duration": "Durée",
+			"updates": "Mises à jour",
+			"impact": "Impact",
+			"timeline": "Chronologie",
+			"noUpdates": "Aucune mise à jour pour le moment.",
+			"status": {
+				"title": "Statut",
+				"investigating": "En cours d’investigation",
+				"identified": "Identifié",
+				"monitoring": "En surveillance",
+				"resolved": "Résolu",
+				"latest": "Dernier"
+			},
+			"severity": {
+				"critical": "Critique",
+				"high": "Élevé",
+				"medium": "Moyen",
+				"low": "Faible"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "Aperçu du service",
+				"serviceDescription": "Un résumé descriptif de ce moniteur basé sur la disponibilité actuelle et le comportement des vérifications.",
+				"monitorType": "{{name}} est configuré comme un moniteur de type {{type}}.",
+				"lastCheckUnavailable": "Aucune donnée de vérification pour le moment.",
+				"lastCheck": "Dernière vérification : {{time}}",
+				"lastReport": "Les {{windowSize}} dernières vérifications incluent {{incidents}} incidents dégradés et {{health}} événements sains.",
+				"latencyReport": "La latence est stable sans variation significative récente.",
+				"serviceHealthReport": "Ce service est sain et répond normalement selon la dernière vérification.",
+				"metrics": {
+					"title": "Indicateurs clés",
+					"uptime": "Disponibilité",
+					"slaTier": "Niveau SLA",
+					"latestLatency": "Dernière latence",
+					"averageLatency": "Latence moyenne",
+					"trimmedAverage": "Moyenne tronquée"
+				},
+				"endpoint": {
+					"title": "Détails du point de terminaison",
+					"monitorName": "Nom du moniteur",
+					"monitorType": "Type de moniteur",
+					"target": "Cible",
+					"noTarget": "Non fourni pour ce type",
+					"tags": "Tags",
+					"noTags": "Aucun tag attribué"
+				},
+				"timeline": {
+					"title": "Résumé de la chronologie récente",
+					"description": "Ce panneau résume les {{windowSize}} dernières vérifications pour détecter rapidement les incidents.",
+					"risk": {
+						"title": "RISQUE DE FIABILITÉ DU SERVICE",
+						"description": "Le comportement est stable avec un risque à court terme {{risk}}.",
+						"low": "Faible",
+						"medium": "Moyen",
+						"high": "Élevé"
+					},
+					"healthy": "Sain",
+					"down": "Indisponible",
+					"degraded": "Dégradé",
+					"maintenance": "Maintenance"
+				}
+			}
+		},
 		"notFound": {
 			"title": "Oh non ! Vous avez fait tomber vos sushis !",
 			"subtitle": "Soit l'URL n'existe pas, soit vous n'y avez pas accès."

@@ -136,7 +136,11 @@
 		},
 		"headerStatusPageControls": {
 			"publicLink": "Veřejný odkaz",
-			"goBack": "Zpět"
+			"goBack": "Zpět",
+			"searchPlaceholder": "Hledat monitory...",
+			"lastRefresh": "Poslední aktualizace",
+			"refreshIn": "Obnovit za",
+			"refreshNow": "Obnovit nyní"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "Incident",
+			"started": "Zahájeno",
+			"resolved": "Vyřešeno",
+			"duration": "Doba trvání",
+			"updates": "Aktualizace",
+			"impact": "Dopad",
+			"timeline": "časová osa",
+			"noUpdates": "Zatím žádné aktualizace.",
+			"status": {
+				"title": "Stav",
+				"investigating": "Vyšetřování",
+				"identified": "Identifikováno",
+				"monitoring": "Monitorování",
+				"resolved": "Vyřešeno",
+				"latest": "Nejnovější"
+			},
+			"severity": {
+				"critical": "Kritická",
+				"high": "Vysoká",
+				"medium": "Střední",
+				"low": "Nízká"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "Přehled služby",
+				"serviceDescription": "Popisné shrnutí tohoto monitoru na základě aktuální dostupnosti a chování heartbeat kontrol.",
+				"monitorType": "{{name}} je nakonfigurován jako {{type}} monitor.",
+				"lastCheckUnavailable": "Zatím nejsou k dispozici žádná data o kontrolách.",
+				"lastCheck": "Poslední kontrola: {{time}}",
+				"lastReport": "Posledních {{windowSize}} kontrol obsahuje {{incidents}} zhoršených událostí a {{health}} zdravých událostí.",
+				"latencyReport": "Latence je stabilní bez významných odchylek v posledních kontrolách.",
+				"serviceHealthReport": "Tato služba je zdravá a reaguje normálně na základě posledního heartbeat signálu.",
+				"metrics": {
+					"title": "Klíčové metriky",
+					"uptime": "Dostupnost",
+					"slaTier": "Úroveň SLA",
+					"latestLatency": "Poslední latence",
+					"averageLatency": "Průměrná latence",
+					"trimmedAverage": "Ořezaný průměr"
+				},
+				"endpoint": {
+					"title": "Detaily endpointu",
+					"monitorName": "Název monitoru",
+					"monitorType": "Typ monitoru",
+					"target": "Cíl",
+					"noTarget": "Pro tento typ monitoru není k dispozici",
+					"tags": "Štítky",
+					"noTags": "Žádné štítky nejsou přiřazeny"
+				},
+				"timeline": {
+					"title": "Souhrn nedávné časové osy",
+					"description": "Tento panel shrnuje posledních {{windowSize}} heartbeat kontrol, aby bylo snazší rychle odhalit incidenty a nestabilitu.",
+					"risk": {
+						"title": "RIZIKO SPOLEHLIVOSTI SLUŽBY",
+						"description": "Chování je konzistentně stabilní s {{risk}} krátkodobým rizikem spolehlivosti.",
+						"low": "Nízké",
+						"medium": "Střední",
+						"high": "Vysoké"
+					},
+					"healthy": "Zdravý",
+					"down": "Nedostupný",
+					"degraded": "Zhoršený",
+					"maintenance": "Údržba"
+				}
+			}
+		},
 		"notFound": {
 			"title": "Ale ne! Upustili jste své sushi!",
 			"subtitle": "Buď tato URL neexistuje, nebo k ní nemáte přístup."

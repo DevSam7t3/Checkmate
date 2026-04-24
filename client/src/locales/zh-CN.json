@@ -135,8 +135,12 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": "公共链接",
-			"goBack": "返回"
+			"publicLink": "公开链接",
+			"goBack": "返回",
+			"searchPlaceholder": "搜索监控...",
+			"lastRefresh": "上次刷新",
+			"refreshIn": "刷新倒计时",
+			"refreshNow": "立即刷新"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "事件",
+			"started": "开始时间",
+			"resolved": "已解决",
+			"duration": "持续时间",
+			"updates": "更新",
+			"impact": "影响",
+			"timeline": "时间线",
+			"noUpdates": "暂无更新。",
+			"status": {
+				"title": "状态",
+				"investigating": "调查中",
+				"identified": "已确认",
+				"monitoring": "监控中",
+				"resolved": "已解决",
+				"latest": "最新"
+			},
+			"severity": {
+				"critical": "严重",
+				"high": "高",
+				"medium": "中",
+				"low": "低"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "服务概览",
+				"serviceDescription": "基于当前 uptime 和心跳行为的监控摘要。",
+				"monitorType": "{{name}} 被配置为 {{type}} 监控。",
+				"lastCheckUnavailable": "暂无检查数据。",
+				"lastCheck": "上次检查：{{time}}",
+				"lastReport": "最近 {{windowSize}} 次检查包含 {{incidents}} 次异常和 {{health}} 次正常事件。",
+				"latencyReport": "延迟稳定，无明显变化。",
+				"serviceHealthReport": "服务运行正常，响应良好。",
+				"metrics": {
+					"title": "关键指标",
+					"uptime": "正常运行时间",
+					"slaTier": "SLA等级",
+					"latestLatency": "最新延迟",
+					"averageLatency": "平均延迟",
+					"trimmedAverage": "修剪平均值"
+				},
+				"endpoint": {
+					"title": "端点详情",
+					"monitorName": "监控名称",
+					"monitorType": "监控类型",
+					"target": "目标",
+					"noTarget": "该类型未提供",
+					"tags": "标签",
+					"noTags": "无标签"
+				},
+				"timeline": {
+					"title": "最近时间线概览",
+					"description": "该面板汇总最近 {{windowSize}} 次检查。",
+					"risk": {
+						"title": "服务可靠性风险",
+						"description": "系统稳定，短期风险为 {{risk}}。",
+						"low": "低",
+						"medium": "中",
+						"high": "高"
+					},
+					"healthy": "正常",
+					"down": "宕机",
+					"degraded": "降级",
+					"maintenance": "维护"
+				}
+			}
+		},
 		"notFound": {
 			"title": "哦不！你的寿司掉了！",
 			"subtitle": "该 URL 不存在，或者您没有访问权限。"

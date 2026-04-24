@@ -136,7 +136,11 @@
 		},
 		"headerStatusPageControls": {
 			"publicLink": "Öffentlicher Link",
-			"goBack": "Zurück"
+			"goBack": "Zurück",
+			"searchPlaceholder": "Monitore suchen...",
+			"lastRefresh": "Letzte Aktualisierung",
+			"refreshIn": "Aktualisierung in",
+			"refreshNow": "Jetzt aktualisieren"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "Vorfall",
+			"started": "Gestartet",
+			"resolved": "Behoben",
+			"duration": "Dauer",
+			"updates": "Updates",
+			"impact": "Auswirkung",
+			"timeline": "Zeitverlauf",
+			"noUpdates": "Noch keine Updates.",
+			"status": {
+				"title": "Status",
+				"investigating": "Untersuchung",
+				"identified": "Identifiziert",
+				"monitoring": "Überwachung",
+				"resolved": "Behoben",
+				"latest": "Neueste"
+			},
+			"severity": {
+				"critical": "Kritisch",
+				"high": "Hoch",
+				"medium": "Mittel",
+				"low": "Niedrig"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "Serviceübersicht",
+				"serviceDescription": "Eine beschreibende Zusammenfassung dieses Monitors basierend auf aktueller Verfügbarkeit und dem Verhalten der Heartbeat-Prüfungen.",
+				"monitorType": "{{name}} ist als {{type}}-Monitor konfiguriert.",
+				"lastCheckUnavailable": "Noch keine Prüfdaten verfügbar.",
+				"lastCheck": "Letzte Prüfung: {{time}}",
+				"lastReport": "Die letzten {{windowSize}} Prüfungen enthalten {{incidents}} beeinträchtigte Ereignisse und {{health}} erfolgreiche Ereignisse.",
+				"latencyReport": "Die Latenz ist stabil ohne signifikante Abweichungen in den letzten Prüfungen.",
+				"serviceHealthReport": "Dieser Dienst ist gesund und reagiert normal basierend auf dem letzten Heartbeat.",
+				"metrics": {
+					"title": "Wichtige Kennzahlen",
+					"uptime": "Verfügbarkeit",
+					"slaTier": "SLA-Stufe",
+					"latestLatency": "Letzte Latenz",
+					"averageLatency": "Durchschnittliche Latenz",
+					"trimmedAverage": "Getrimmter Durchschnitt"
+				},
+				"endpoint": {
+					"title": "Endpoint-Details",
+					"monitorName": "Monitorname",
+					"monitorType": "Monitortyp",
+					"target": "Ziel",
+					"noTarget": "Für diesen Monitortyp nicht verfügbar",
+					"tags": "Tags",
+					"noTags": "Keine Tags zugewiesen"
+				},
+				"timeline": {
+					"title": "Zusammenfassung der letzten Zeitachse",
+					"description": "Dieses Panel fasst die letzten {{windowSize}} Heartbeat-Prüfungen zusammen, sodass Vorfälle und Instabilitäten schnell erkannt werden können.",
+					"risk": {
+						"title": "RISIKO DER DIENSTZUVERLÄSSIGKEIT",
+						"description": "Das Verhalten ist durchgehend stabil mit einem {{risk}} kurzfristigen Zuverlässigkeitsrisiko.",
+						"low": "Niedrig",
+						"medium": "Mittel",
+						"high": "Hoch"
+					},
+					"healthy": "Gesund",
+					"down": "Ausgefallen",
+					"degraded": "Beeinträchtigt",
+					"maintenance": "Wartung"
+				}
+			}
+		},
 		"notFound": {
 			"title": "Oh nein! Sie haben Ihr Sushi fallen lassen!",
 			"subtitle": "Entweder existiert die URL nicht oder Sie haben keinen Zugriff darauf."

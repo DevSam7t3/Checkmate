@@ -136,7 +136,11 @@
 		},
 		"headerStatusPageControls": {
 			"publicLink": "Публичная ссылка",
-			"goBack": "Назад"
+			"goBack": "Назад",
+			"searchPlaceholder": "Поиск мониторов...",
+			"lastRefresh": "Последнее обновление",
+			"refreshIn": "Обновление через",
+			"refreshNow": "Обновить сейчас"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "Инцидент",
+			"started": "Начато",
+			"resolved": "Решено",
+			"duration": "Длительность",
+			"updates": "Обновления",
+			"impact": "Влияние",
+			"timeline": "Хронология",
+			"noUpdates": "Пока нет обновлений.",
+			"status": {
+				"title": "Статус",
+				"investigating": "Расследуется",
+				"identified": "Выявлено",
+				"monitoring": "Мониторинг",
+				"resolved": "Решено",
+				"latest": "Последний"
+			},
+			"severity": {
+				"critical": "Критический",
+				"high": "Высокий",
+				"medium": "Средний",
+				"low": "Низкий"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "Обзор сервиса",
+				"serviceDescription": "Описание данного монитора на основе текущего аптайма и поведения проверок.",
+				"monitorType": "{{name}} настроен как монитор типа {{type}}.",
+				"lastCheckUnavailable": "Данных проверок пока нет.",
+				"lastCheck": "Последняя проверка: {{time}}",
+				"lastReport": "Последние {{windowSize}} проверок включают {{incidents}} проблемных событий и {{health}} нормальных.",
+				"latencyReport": "Задержка стабильна без значительных изменений.",
+				"serviceHealthReport": "Сервис работает нормально согласно последнему heartbeat.",
+				"metrics": {
+					"title": "Ключевые метрики",
+					"uptime": "Аптайм",
+					"slaTier": "Уровень SLA",
+					"latestLatency": "Последняя задержка",
+					"averageLatency": "Средняя задержка",
+					"trimmedAverage": "Обрезанное среднее"
+				},
+				"endpoint": {
+					"title": "Детали эндпоинта",
+					"monitorName": "Имя монитора",
+					"monitorType": "Тип монитора",
+					"target": "Цель",
+					"noTarget": "Не указано для этого типа",
+					"tags": "Теги",
+					"noTags": "Теги отсутствуют"
+				},
+				"timeline": {
+					"title": "Недавняя сводка таймлайна",
+					"description": "Панель показывает последние {{windowSize}} проверок для быстрого выявления проблем.",
+					"risk": {
+						"title": "РИСК НАДЕЖНОСТИ СЕРВИСА",
+						"description": "Поведение стабильно, краткосрочный риск {{risk}}.",
+						"low": "Низкий",
+						"medium": "Средний",
+						"high": "Высокий"
+					},
+					"healthy": "Работает",
+					"down": "Недоступен",
+					"degraded": "С ухудшением",
+					"maintenance": "Обслуживание"
+				}
+			}
+		},
 		"notFound": {
 			"title": "Ой! Вы уронили суши!",
 			"subtitle": "Либо URL не существует, либо у Вас нет к нему доступа."

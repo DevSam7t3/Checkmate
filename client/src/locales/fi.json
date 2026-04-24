@@ -136,7 +136,11 @@
 		},
 		"headerStatusPageControls": {
 			"publicLink": "Julkinen linkki",
-			"goBack": "Takaisin"
+			"goBack": "Palaa",
+			"searchPlaceholder": "Hae valvontoja...",
+			"lastRefresh": "Viimeisin päivitys",
+			"refreshIn": "Päivitys ajassa",
+			"refreshNow": "Päivitä nyt"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "Tapahtuma",
+			"started": "Aloitettu",
+			"resolved": "Ratkaistu",
+			"duration": "Kesto",
+			"updates": "Päivitykset",
+			"impact": "Vaikutus",
+			"timeline": "Aikajana",
+			"noUpdates": "Ei päivityksiä vielä.",
+			"status": {
+				"title": "Tila",
+				"investigating": "Tutkitaan",
+				"identified": "Tunnistettu",
+				"monitoring": "Seurannassa",
+				"resolved": "Ratkaistu",
+				"latest": "Viimeisin"
+			},
+			"severity": {
+				"critical": "Kriittinen",
+				"high": "Korkea",
+				"medium": "Keskitaso",
+				"low": "Matala"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "Palvelun yleiskuvaus",
+				"serviceDescription": "Kuvaava yhteenveto tästä valvonnasta nykyisen käyttöajan ja sydänlyöntikäyttäytymisen perusteella.",
+				"monitorType": "{{name}} on määritetty {{type}}-valvonnaksi.",
+				"lastCheckUnavailable": "Ei vielä tarkistustietoja.",
+				"lastCheck": "Viimeisin tarkistus: {{time}}",
+				"lastReport": "Viimeiset {{windowSize}} tarkistusta sisältävät {{incidents}} häiriötä ja {{health}} terveellistä tapahtumaa.",
+				"latencyReport": "Viive on vakaa ilman merkittäviä muutoksia.",
+				"serviceHealthReport": "Palvelu on terve ja vastaa normaalisti viimeisimmän tarkistuksen perusteella.",
+				"metrics": {
+					"title": "Keskeiset mittarit",
+					"uptime": "Käyttöaika",
+					"slaTier": "SLA-taso",
+					"latestLatency": "Viimeisin viive",
+					"averageLatency": "Keskimääräinen viive",
+					"trimmedAverage": "Trimmattu keskiarvo"
+				},
+				"endpoint": {
+					"title": "Päätepisteen tiedot",
+					"monitorName": "Valvonnan nimi",
+					"monitorType": "Valvonnan tyyppi",
+					"target": "Kohde",
+					"noTarget": "Ei määritetty tälle tyypille",
+					"tags": "Tunnisteet",
+					"noTags": "Ei tunnisteita"
+				},
+				"timeline": {
+					"title": "Viimeaikainen aikajana",
+					"description": "Tämä paneeli tiivistää viimeiset {{windowSize}} tarkistusta häiriöiden havaitsemiseksi nopeasti.",
+					"risk": {
+						"title": "PALVELUN LUOTETTAVUUSRISKI",
+						"description": "Käyttäytyminen on vakaata ja lyhyen aikavälin riski on {{risk}}.",
+						"low": "Matala",
+						"medium": "Keskitaso",
+						"high": "Korkea"
+					},
+					"healthy": "Terve",
+					"down": "Alas",
+					"degraded": "Heikentynyt",
+					"maintenance": "Huolto"
+				}
+			}
+		},
 		"notFound": {
 			"title": "Voi ei! Sushisi putosi!",
 			"subtitle": "Joko URL-osoitetta ei ole olemassa tai sinulla ei ole pääsyä siihen."

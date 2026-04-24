@@ -136,7 +136,11 @@
 		},
 		"headerStatusPageControls": {
 			"publicLink": "Liên kết công khai",
-			"goBack": "Quay lại"
+			"goBack": "Quay lại",
+			"searchPlaceholder": "Tìm kiếm monitor...",
+			"lastRefresh": "Lần làm mới cuối",
+			"refreshIn": "Làm mới sau",
+			"refreshNow": "Làm mới ngay"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "Sự cố",
+			"started": "Bắt đầu",
+			"resolved": "Đã xử lý",
+			"duration": "Thời gian",
+			"updates": "Cập nhật",
+			"impact": "Ảnh hưởng",
+			"timeline": "Dòng thời gian",
+			"noUpdates": "Chưa có cập nhật.",
+			"status": {
+				"title": "Trạng thái",
+				"investigating": "Đang điều tra",
+				"identified": "Đã xác định",
+				"monitoring": "Đang theo dõi",
+				"resolved": "Đã giải quyết",
+				"latest": "Mới nhất"
+			},
+			"severity": {
+				"critical": "Nghiêm trọng",
+				"high": "Cao",
+				"medium": "Trung bình",
+				"low": "Thấp"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "Tổng quan dịch vụ",
+				"serviceDescription": "Tóm tắt trạng thái monitor dựa trên uptime và heartbeat hiện tại.",
+				"monitorType": "{{name}} được cấu hình là monitor loại {{type}}.",
+				"lastCheckUnavailable": "Chưa có dữ liệu kiểm tra.",
+				"lastCheck": "Kiểm tra cuối: {{time}}",
+				"lastReport": "{{windowSize}} lần kiểm tra gần nhất có {{incidents}} sự cố và {{health}} trạng thái tốt.",
+				"latencyReport": "Độ trễ ổn định, không có thay đổi đáng kể.",
+				"serviceHealthReport": "Dịch vụ hoạt động bình thường theo heartbeat mới nhất.",
+				"metrics": {
+					"title": "Chỉ số chính",
+					"uptime": "Thời gian hoạt động",
+					"slaTier": "Cấp SLA",
+					"latestLatency": "Độ trễ mới nhất",
+					"averageLatency": "Độ trễ trung bình",
+					"trimmedAverage": "Trung bình cắt gọn"
+				},
+				"endpoint": {
+					"title": "Chi tiết endpoint",
+					"monitorName": "Tên monitor",
+					"monitorType": "Loại monitor",
+					"target": "Mục tiêu",
+					"noTarget": "Không được cung cấp",
+					"tags": "Thẻ",
+					"noTags": "Không có thẻ"
+				},
+				"timeline": {
+					"title": "Tóm tắt timeline gần đây",
+					"description": "Bảng này tóm tắt {{windowSize}} lần kiểm tra gần nhất.",
+					"risk": {
+						"title": "RỦI RO ĐỘ TIN CẬY DỊCH VỤ",
+						"description": "Hệ thống ổn định với rủi ro ngắn hạn {{risk}}.",
+						"low": "Thấp",
+						"medium": "Trung bình",
+						"high": "Cao"
+					},
+					"healthy": "Ổn định",
+					"down": "Ngừng hoạt động",
+					"degraded": "Suy giảm",
+					"maintenance": "Bảo trì"
+				}
+			}
+		},
 		"notFound": {
 			"title": "Ôi không! Bạn đã làm rơi sushi!",
 			"subtitle": "Either the URL doesn’t exist, or you don’t have access to it."

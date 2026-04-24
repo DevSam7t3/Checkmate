@@ -135,8 +135,12 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": "Herkese açık bağlantı",
-			"goBack": "Geri dön"
+			"publicLink": "Genel bağlantı",
+			"goBack": "Geri dön",
+			"searchPlaceholder": "Monitör ara...",
+			"lastRefresh": "Son yenileme",
+			"refreshIn": "Yenileme süresi",
+			"refreshNow": "Şimdi yenile"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "Olay",
+			"started": "Başladı",
+			"resolved": "Çözüldü",
+			"duration": "Süre",
+			"updates": "Güncellemeler",
+			"impact": "Etkisi",
+			"timeline": "Zaman çizelgesi",
+			"noUpdates": "Henüz güncelleme yok.",
+			"status": {
+				"title": "Durum",
+				"investigating": "İnceleniyor",
+				"identified": "Tespit edildi",
+				"monitoring": "İzleniyor",
+				"resolved": "Çözüldü",
+				"latest": "En son"
+			},
+			"severity": {
+				"critical": "Kritik",
+				"high": "Yüksek",
+				"medium": "Orta",
+				"low": "Düşük"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "Servis özeti",
+				"serviceDescription": "Mevcut uptime ve heartbeat davranışına dayalı açıklayıcı özet.",
+				"monitorType": "{{name}} {{type}} monitörü olarak yapılandırılmıştır.",
+				"lastCheckUnavailable": "Henüz kontrol verisi yok.",
+				"lastCheck": "Son kontrol: {{time}}",
+				"lastReport": "Son {{windowSize}} kontrol {{incidents}} sorunlu ve {{health}} sağlıklı olay içeriyor.",
+				"latencyReport": "Gecikme stabildir, önemli bir değişiklik yok.",
+				"serviceHealthReport": "Servis sağlıklı ve normal şekilde yanıt veriyor.",
+				"metrics": {
+					"title": "Temel metrikler",
+					"uptime": "Çalışma süresi",
+					"slaTier": "SLA seviyesi",
+					"latestLatency": "Son gecikme",
+					"averageLatency": "Ortalama gecikme",
+					"trimmedAverage": "Kırpılmış ortalama"
+				},
+				"endpoint": {
+					"title": "Uç nokta detayları",
+					"monitorName": "Monitör adı",
+					"monitorType": "Monitör türü",
+					"target": "Hedef",
+					"noTarget": "Bu tür için belirtilmemiş",
+					"tags": "Etiketler",
+					"noTags": "Etiket yok"
+				},
+				"timeline": {
+					"title": "Son zaman çizelgesi özeti",
+					"description": "Bu panel son {{windowSize}} kontrolü özetler.",
+					"risk": {
+						"title": "SERVİS GÜVENİLİRLİK RİSKİ",
+						"description": "Davranış stabil ve kısa vadeli risk {{risk}}.",
+						"low": "Düşük",
+						"medium": "Orta",
+						"high": "Yüksek"
+					},
+					"healthy": "Sağlıklı",
+					"down": "Kapalı",
+					"degraded": "Bozulmuş",
+					"maintenance": "Bakım"
+				}
+			}
+		},
 		"notFound": {
 			"title": "Eyvah! Sushini düşürdün!",
 			"subtitle": "URL mevcut değil veya erişim yetkiniz yok."

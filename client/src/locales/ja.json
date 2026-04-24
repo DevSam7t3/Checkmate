@@ -136,7 +136,11 @@
 		},
 		"headerStatusPageControls": {
 			"publicLink": "公開リンク",
-			"goBack": "戻る"
+			"goBack": "戻る",
+			"searchPlaceholder": "モニターを検索...",
+			"lastRefresh": "最終更新",
+			"refreshIn": "次の更新まで",
+			"refreshNow": "今すぐ更新"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "インシデント",
+			"started": "開始",
+			"resolved": "解決",
+			"duration": "期間",
+			"updates": "更新",
+			"impact": "影響",
+			"timeline": "タイムライン",
+			"noUpdates": "まだ更新はありません。",
+			"status": {
+				"title": "ステータス",
+				"investigating": "調査中",
+				"identified": "特定済み",
+				"monitoring": "監視中",
+				"resolved": "解決済み",
+				"latest": "最新"
+			},
+			"severity": {
+				"critical": "重大",
+				"high": "高",
+				"medium": "中",
+				"low": "低"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "サービス概要",
+				"serviceDescription": "現在の稼働状況とハートビート動作に基づくこのモニターの概要です。",
+				"monitorType": "{{name}} は {{type}} モニターとして設定されています。",
+				"lastCheckUnavailable": "まだチェックデータがありません。",
+				"lastCheck": "最終チェック: {{time}}",
+				"lastReport": "直近 {{windowSize}} 回のチェックには {{incidents}} 件の障害と {{health}} 件の正常イベントが含まれます。",
+				"latencyReport": "レイテンシは安定しており、大きな変動はありません。",
+				"serviceHealthReport": "このサービスは正常で、最新のハートビートに基づき正常に応答しています。",
+				"metrics": {
+					"title": "主要メトリクス",
+					"uptime": "稼働率",
+					"slaTier": "SLAレベル",
+					"latestLatency": "最新レイテンシ",
+					"averageLatency": "平均レイテンシ",
+					"trimmedAverage": "トリム平均"
+				},
+				"endpoint": {
+					"title": "エンドポイント詳細",
+					"monitorName": "モニター名",
+					"monitorType": "モニタータイプ",
+					"target": "対象",
+					"noTarget": "このタイプには未設定",
+					"tags": "タグ",
+					"noTags": "タグなし"
+				},
+				"timeline": {
+					"title": "最近のタイムライン概要",
+					"description": "このパネルは直近 {{windowSize}} 回のチェックを要約し、障害を素早く検出できるようにします。",
+					"risk": {
+						"title": "サービス信頼性リスク",
+						"description": "動作は安定しており短期リスクは {{risk}} です。",
+						"low": "低",
+						"medium": "中",
+						"high": "高"
+					},
+					"healthy": "正常",
+					"down": "停止",
+					"degraded": "劣化",
+					"maintenance": "メンテナンス"
+				}
+			}
+		},
 		"notFound": {
 			"title": "おっと！お寿司を落としてしまいました！",
 			"subtitle": "URLが存在しないか、アクセス権限がありません。"

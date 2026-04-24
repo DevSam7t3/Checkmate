@@ -136,7 +136,11 @@
 		},
 		"headerStatusPageControls": {
 			"publicLink": "公開連結",
-			"goBack": "返回"
+			"goBack": "返回",
+			"searchPlaceholder": "搜尋監控...",
+			"lastRefresh": "上次刷新",
+			"refreshIn": "刷新倒數",
+			"refreshNow": "立即刷新"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "事件",
+			"started": "開始",
+			"resolved": "已解決",
+			"duration": "持續時間",
+			"updates": "更新",
+			"impact": "影響",
+			"timeline": "時間線",
+			"noUpdates": "尚無更新。",
+			"status": {
+				"title": "狀態",
+				"investigating": "調查中",
+				"identified": "已確認",
+				"monitoring": "監控中",
+				"resolved": "已解決",
+				"latest": "最新"
+			},
+			"severity": {
+				"critical": "嚴重",
+				"high": "高",
+				"medium": "中",
+				"low": "低"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "服務概覽",
+				"serviceDescription": "基於目前 uptime 與心跳行為的監控摘要。",
+				"monitorType": "{{name}} 被設定為 {{type}} 監控。",
+				"lastCheckUnavailable": "尚無檢查資料。",
+				"lastCheck": "上次檢查：{{time}}",
+				"lastReport": "最近 {{windowSize}} 次檢查包含 {{incidents}} 次異常與 {{health}} 次正常事件。",
+				"latencyReport": "延遲穩定，無明顯變化。",
+				"serviceHealthReport": "服務運行正常，回應良好。",
+				"metrics": {
+					"title": "關鍵指標",
+					"uptime": "正常運行時間",
+					"slaTier": "SLA等級",
+					"latestLatency": "最新延遲",
+					"averageLatency": "平均延遲",
+					"trimmedAverage": "修剪平均"
+				},
+				"endpoint": {
+					"title": "端點詳情",
+					"monitorName": "監控名稱",
+					"monitorType": "監控類型",
+					"target": "目標",
+					"noTarget": "此類型未提供",
+					"tags": "標籤",
+					"noTags": "無標籤"
+				},
+				"timeline": {
+					"title": "最近時間線摘要",
+					"description": "此面板總結最近 {{windowSize}} 次檢查。",
+					"risk": {
+						"title": "服務可靠性風險",
+						"description": "系統穩定，短期風險為 {{risk}}。",
+						"low": "低",
+						"medium": "中",
+						"high": "高"
+					},
+					"healthy": "正常",
+					"down": "中斷",
+					"degraded": "降級",
+					"maintenance": "維護"
+				}
+			}
+		},
 		"notFound": {
 			"title": "哎呀！您的壽司掉了！",
 			"subtitle": "該 URL 不存在，或您沒有存取權限。"

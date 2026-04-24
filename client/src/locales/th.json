@@ -136,7 +136,11 @@
 		},
 		"headerStatusPageControls": {
 			"publicLink": "ลิงก์สาธารณะ",
-			"goBack": "กลับ"
+			"goBack": "ย้อนกลับ",
+			"searchPlaceholder": "ค้นหามอนิเตอร์...",
+			"lastRefresh": "รีเฟรชล่าสุด",
+			"refreshIn": "รีเฟรชใน",
+			"refreshNow": "รีเฟรชทันที"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "เหตุการณ์",
+			"started": "เริ่มต้น",
+			"resolved": "แก้ไขแล้ว",
+			"duration": "ระยะเวลา",
+			"updates": "อัปเดต",
+			"impact": "ผลกระทบ",
+			"timeline": "ไทม์ไลน์",
+			"noUpdates": "ยังไม่มีการอัปเดต",
+			"status": {
+				"title": "สถานะ",
+				"investigating": "กำลังตรวจสอบ",
+				"identified": "ระบุสาเหตุแล้ว",
+				"monitoring": "กำลังติดตาม",
+				"resolved": "แก้ไขแล้ว",
+				"latest": "ล่าสุด"
+			},
+			"severity": {
+				"critical": "วิกฤต",
+				"high": "สูง",
+				"medium": "ปานกลาง",
+				"low": "ต่ำ"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "ภาพรวมบริการ",
+				"serviceDescription": "สรุปภาพรวมของมอนิเตอร์นี้ตามสถานะ uptime และพฤติกรรม heartbeat ปัจจุบัน",
+				"monitorType": "{{name}} ถูกตั้งค่าเป็นมอนิเตอร์ประเภท {{type}}",
+				"lastCheckUnavailable": "ยังไม่มีข้อมูลการตรวจสอบ",
+				"lastCheck": "ตรวจสอบล่าสุด: {{time}}",
+				"lastReport": "การตรวจสอบ {{windowSize}} ครั้งล่าสุดมี {{incidents}} เหตุการณ์ผิดปกติ และ {{health}} เหตุการณ์ปกติ",
+				"latencyReport": "ความหน่วงคงที่ ไม่มีความเปลี่ยนแปลงที่สำคัญ",
+				"serviceHealthReport": "บริการนี้อยู่ในสภาพปกติและตอบสนองได้ดี",
+				"metrics": {
+					"title": "ตัวชี้วัดหลัก",
+					"uptime": "Uptime",
+					"slaTier": "ระดับ SLA",
+					"latestLatency": "ความหน่วงล่าสุด",
+					"averageLatency": "ความหน่วงเฉลี่ย",
+					"trimmedAverage": "ค่าเฉลี่ยตัดทิ้ง"
+				},
+				"endpoint": {
+					"title": "รายละเอียดปลายทาง",
+					"monitorName": "ชื่อมอนิเตอร์",
+					"monitorType": "ประเภทมอนิเตอร์",
+					"target": "เป้าหมาย",
+					"noTarget": "ไม่ได้ระบุสำหรับประเภทนี้",
+					"tags": "แท็ก",
+					"noTags": "ไม่มีแท็ก"
+				},
+				"timeline": {
+					"title": "สรุปไทม์ไลน์ล่าสุด",
+					"description": "แผงนี้สรุปการตรวจสอบ {{windowSize}} ครั้งล่าสุดเพื่อให้เห็นปัญหาได้เร็วขึ้น",
+					"risk": {
+						"title": "ความเสี่ยงความเสถียรของบริการ",
+						"description": "ระบบมีความเสถียรและมีความเสี่ยงระยะสั้นระดับ {{risk}}",
+						"low": "ต่ำ",
+						"medium": "กลาง",
+						"high": "สูง"
+					},
+					"healthy": "ปกติ",
+					"down": "ล่ม",
+					"degraded": "เสื่อมสภาพ",
+					"maintenance": "บำรุงรักษา"
+				}
+			}
+		},
 		"notFound": {
 			"title": "โอ้ไม่! ซูชิของคุณหล่นแล้ว!",
 			"subtitle": "URL ไม่มีอยู่ หรือคุณไม่มีสิทธิ์เข้าถึง"

@@ -136,7 +136,11 @@
 		},
 		"headerStatusPageControls": {
 			"publicLink": "Публічне посилання",
-			"goBack": "Назад"
+			"goBack": "Назад",
+			"searchPlaceholder": "Пошук моніторів...",
+			"lastRefresh": "Останнє оновлення",
+			"refreshIn": "Оновлення через",
+			"refreshNow": "Оновити зараз"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "Інцидент",
+			"started": "Почато",
+			"resolved": "Вирішено",
+			"duration": "Тривалість",
+			"updates": "Оновлення",
+			"impact": "Вплив",
+			"timeline": "Хронологія",
+			"noUpdates": "Поки що немає оновлень.",
+			"status": {
+				"title": "Статус",
+				"investigating": "Розслідується",
+				"identified": "Виявлено",
+				"monitoring": "Моніторинг",
+				"resolved": "Вирішено",
+				"latest": "Останній"
+			},
+			"severity": {
+				"critical": "Критичний",
+				"high": "Високий",
+				"medium": "Середній",
+				"low": "Низький"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "Огляд сервісу",
+				"serviceDescription": "Опис цього монітора на основі поточного аптайму та поведінки heartbeat.",
+				"monitorType": "{{name}} налаштовано як монітор типу {{type}}.",
+				"lastCheckUnavailable": "Дані перевірок ще відсутні.",
+				"lastCheck": "Остання перевірка: {{time}}",
+				"lastReport": "Останні {{windowSize}} перевірок містять {{incidents}} проблемних і {{health}} нормальних подій.",
+				"latencyReport": "Затримка стабільна без значних змін.",
+				"serviceHealthReport": "Сервіс працює нормально згідно з останнім heartbeat.",
+				"metrics": {
+					"title": "Основні метрики",
+					"uptime": "Аптайм",
+					"slaTier": "Рівень SLA",
+					"latestLatency": "Остання затримка",
+					"averageLatency": "Середня затримка",
+					"trimmedAverage": "Обрізане середнє"
+				},
+				"endpoint": {
+					"title": "Деталі ендпоінта",
+					"monitorName": "Назва монітора",
+					"monitorType": "Тип монітора",
+					"target": "Ціль",
+					"noTarget": "Не вказано для цього типу",
+					"tags": "Теги",
+					"noTags": "Теги відсутні"
+				},
+				"timeline": {
+					"title": "Останній огляд таймлайну",
+					"description": "Панель підсумовує останні {{windowSize}} перевірок для швидкого виявлення проблем.",
+					"risk": {
+						"title": "РИЗИК НАДІЙНОСТІ СЕРВІСУ",
+						"description": "Поведінка стабільна, короткостроковий ризик {{risk}}.",
+						"low": "Низький",
+						"medium": "Середній",
+						"high": "Високий"
+					},
+					"healthy": "Працює",
+					"down": "Не працює",
+					"degraded": "Погіршено",
+					"maintenance": "Обслуговування"
+				}
+			}
+		},
 		"notFound": {
 			"title": "Ой ні! Ви впустили суші!",
 			"subtitle": "Або URL не існує, або у Вас немає доступу до нього."

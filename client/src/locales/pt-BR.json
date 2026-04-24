@@ -135,8 +135,12 @@
 			}
 		},
 		"headerStatusPageControls": {
-			"publicLink": "Link publico",
-			"goBack": "Voltar"
+			"publicLink": "Link público",
+			"goBack": "Voltar",
+			"searchPlaceholder": "Buscar monitores...",
+			"lastRefresh": "Última atualização",
+			"refreshIn": "Atualizar em",
+			"refreshNow": "Atualizar agora"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "Incidente",
+			"started": "Iniciado",
+			"resolved": "Resolvido",
+			"duration": "Duração",
+			"updates": "Atualizações",
+			"impact": "Impacto",
+			"timeline": "Linha do tempo",
+			"noUpdates": "Ainda não há atualizações.",
+			"status": {
+				"title": "Status",
+				"investigating": "Investigando",
+				"identified": "Identificado",
+				"monitoring": "Monitorando",
+				"resolved": "Resolvido",
+				"latest": "Mais recente"
+			},
+			"severity": {
+				"critical": "Crítico",
+				"high": "Alto",
+				"medium": "Médio",
+				"low": "Baixo"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "Visão geral do serviço",
+				"serviceDescription": "Um resumo descritivo deste monitor baseado no status atual de uptime e comportamento de heartbeat.",
+				"monitorType": "{{name}} está configurado como um monitor do tipo {{type}}.",
+				"lastCheckUnavailable": "Ainda não há dados de verificação.",
+				"lastCheck": "Última verificação: {{time}}",
+				"lastReport": "As últimas {{windowSize}} verificações incluem {{incidents}} eventos degradados e {{health}} eventos saudáveis.",
+				"latencyReport": "A latência está estável sem variações significativas recentes.",
+				"serviceHealthReport": "Este serviço está saudável e respondendo normalmente.",
+				"metrics": {
+					"title": "Métricas principais",
+					"uptime": "Uptime",
+					"slaTier": "Nível de SLA",
+					"latestLatency": "Última latência",
+					"averageLatency": "Latência média",
+					"trimmedAverage": "Média aparada"
+				},
+				"endpoint": {
+					"title": "Detalhes do endpoint",
+					"monitorName": "Nome do monitor",
+					"monitorType": "Tipo do monitor",
+					"target": "Destino",
+					"noTarget": "Não fornecido para este tipo",
+					"tags": "Tags",
+					"noTags": "Sem tags"
+				},
+				"timeline": {
+					"title": "Resumo da linha do tempo recente",
+					"description": "Este painel resume as últimas {{windowSize}} verificações para detectar incidentes rapidamente.",
+					"risk": {
+						"title": "RISCO DE CONFIABILIDADE DO SERVIÇO",
+						"description": "O comportamento está estável com risco de curto prazo {{risk}}.",
+						"low": "Baixo",
+						"medium": "Médio",
+						"high": "Alto"
+					},
+					"healthy": "Saudável",
+					"down": "Indisponível",
+					"degraded": "Degradado",
+					"maintenance": "Manutenção"
+				}
+			}
+		},
 		"notFound": {
 			"title": "Oh não! Você derrubou seu sushi!",
 			"subtitle": "A URL não existe ou você não tem acesso a ela."

@@ -136,7 +136,11 @@
 		},
 		"headerStatusPageControls": {
 			"publicLink": "الرابط العام",
-			"goBack": "العودة"
+			"goBack": "العودة",
+			"searchPlaceholder": "ابحث عن المراقبين...",
+			"lastRefresh": "آخر تحديث",
+			"refreshIn": "التحديث خلال",
+			"refreshNow": "تحديث الآن"
 		},
 		"headerTimeRange": {
 			"labels": {
@@ -203,6 +207,74 @@
 		}
 	},
 	"pages": {
+		"incident": {
+			"title": "حادثة",
+			"started": "بدأت",
+			"resolved": "تم الحل",
+			"duration": "المدة",
+			"updates": "التحديثات",
+			"impact": "التأثير",
+			"timeline": "الجدول الزمني",
+			"noUpdates": "لا توجد تحديثات حتى الآن.",
+			"status": {
+				"title": "الحالة",
+				"investigating": "قيد التحقيق",
+				"identified": "تم التحديد",
+				"monitoring": "تحت المراقبة",
+				"resolved": "تم الحل",
+				"latest": "الأحدث"
+			},
+			"severity": {
+				"critical": "حرج",
+				"high": "مرتفع",
+				"medium": "متوسط",
+				"low": "منخفض"
+			}
+		},
+		"statusPage": {
+			"publicMonitorDetails": {
+				"serviceOverview": "نظرة عامة على الخدمة",
+				"serviceDescription": "ملخص وصفي لهذا المراقب استنادًا إلى وقت التشغيل الحالي وسلوك النبضات.",
+				"monitorType": "تم إعداد {{name}} كمراقب من نوع {{type}}.",
+				"lastCheckUnavailable": "لا توجد بيانات فحص حتى الآن.",
+				"lastCheck": "آخر فحص: {{time}}",
+				"lastReport": "آخر {{windowSize}} عمليات فحص تتضمن {{incidents}} حالات تدهور و{{health}} حالات سليمة.",
+				"latencyReport": "زمن الاستجابة مستقر ولا يوجد أي تغير ملحوظ في الفحوصات الأخيرة.",
+				"serviceHealthReport": "هذه الخدمة تعمل بشكل طبيعي وتستجيب بصورة سليمة بناءً على آخر نبضة.",
+				"metrics": {
+					"title": "المقاييس الرئيسية",
+					"uptime": "وقت التشغيل",
+					"slaTier": "مستوى اتفاقية الخدمة (SLA)",
+					"latestLatency": "أحدث زمن استجابة",
+					"averageLatency": "متوسط زمن الاستجابة",
+					"trimmedAverage": "المتوسط المُعدّل"
+				},
+				"endpoint": {
+					"title": "تفاصيل نقطة النهاية",
+					"monitorName": "اسم المراقب",
+					"monitorType": "نوع المراقب",
+					"target": "الهدف",
+					"noTarget": "غير متوفر لهذا النوع من المراقبين",
+					"tags": "الوسوم",
+					"noTags": "لا توجد وسوم مضافة"
+				},
+				"timeline": {
+					"title": "ملخص الجدول الزمني الأخير",
+					"description": "تلخص هذه اللوحة أحدث {{windowSize}} من فحوصات النبضات، مما يسهل اكتشاف الأعطال وعدم الاستقرار بسرعة.",
+					"risk": {
+						"title": "مخاطر موثوقية الخدمة",
+						"description": "السلوك مستقر بشكل عام مع مستوى مخاطر قصيرة المدى يبلغ {{risk}}.",
+						"low": "منخفض",
+						"medium": "متوسط",
+						"high": "مرتفع"
+					},
+					"healthy": "سليم",
+					"down": "متوقف",
+					"degraded": "متدهور",
+					"maintenance": "صيانة"
+				}
+			}
+		},
 		"notFound": {
 			"title": "يا إلهي! لقد أسقطت السوشي!",
 			"subtitle": "إما أن الرابط غير موجود، أو ليس لديك صلاحية الوصول إليه."
