@@ -23,7 +23,7 @@ import {
 import { alpha, useTheme, type Theme } from "@mui/material/styles";
 import { useSelector } from "react-redux";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import type { Monitor } from "@/Types/Monitor";
 import type { StatusPage } from "@/Types/StatusPage";
 import type { RootState } from "@/Types/state";
@@ -36,6 +36,7 @@ interface StatusPageMonitor extends Monitor {
 interface MonitorsListProps {
 	statusPage: StatusPage;
 	monitors: StatusPageMonitor[];
+	isDetailsPage?: boolean;
 }
 
 type MonitorCheck = NonNullable<StatusPageMonitor["checks"]>[number];
@@ -85,7 +86,7 @@ const resolveUptimePercentage = (monitor: StatusPageMonitor) => {
 	const checks = monitor.checks ?? [];
 	if (!checks.length) return 0;
 
-	const successfulChecks = checks.filter((check) => check.status === true).length;
+	const successfulChecks = checks.filter((check) => check.status).length;
 	return (successfulChecks / checks.length) * 100;
 };
 
@@ -481,21 +482,16 @@ const AvailabilityStrip = ({ monitor }: { monitor: StatusPageMonitor }) => {
 
 const MonitorHeader = ({
 	monitor,
-	statusPageUrl,
 	showURL,
 	showUptime,
 }: {
 	monitor: StatusPageMonitor;
-	statusPageUrl: string;
 	showURL: boolean;
 	showUptime: boolean;
 }) => {
 	const theme = useTheme();
-	const location = useLocation();
-	const isPublic = location.pathname.startsWith("/status/public");
 	const statusColor = getStatusColor(monitor.status, theme);
 	const StatusIcon = getStatusIcon(monitor.status);
-	const detailPath = `/status/public/${statusPageUrl}/${monitor.id}`;
 
 	return (
 		<Stack
@@ -530,16 +526,7 @@ const MonitorHeader = ({
 							fontWeight: 700,
 						}}
 					>
-						{isPublic ? (
-							<Link
-								to={detailPath}
-								style={{ color: "inherit", textDecoration: "none" }}
-							>
-								{monitor.name}
-							</Link>
-						) : (
-							monitor.name
-						)}
+						{monitor.name}
 					</Typography>
 					{/* <Typography
 						variant="caption"
@@ -648,11 +635,11 @@ const MonitorContent = ({
 	const gradientId = `monitor-gradient-${monitor.id}`;
 
 	if (monitor.type === "hardware") {
-		if (statusPage.showInfrastructure === false) return null;
+		if (!statusPage.showInfrastructure) return null;
 		return <InfrastructureMetrics monitor={monitor} />;
 	}
 
-	if (statusPage.showCharts === false) return null;
+	if (!statusPage.showCharts) return null;
 
 	if (filteredData.length === 0) {
 		return (
@@ -848,9 +835,12 @@ const MonitorContent = ({
 	);
 };
 
-export const MonitorsList = ({ statusPage, monitors }: MonitorsListProps) => {
+export const MonitorsList = ({ statusPage, monitors, isDetailsPage = false }: MonitorsListProps) => {
 	const theme = useTheme();
 	const showURL = useSelector((state: RootState) => state.ui?.showURL);
+	const navigate = useNavigate();
+
+	console.log(`is details page: ${isDetailsPage}`);
 
 	return (
 		<Stack gap={theme.spacing(10)}>
@@ -869,11 +859,15 @@ export const MonitorsList = ({ statusPage, monitors }: MonitorsListProps) => {
 							theme.palette.mode === "dark"
 								? "0 10px 30px rgba(0,0,0,0.26)"
 								: "0 8px 24px rgba(24,39,75,0.08)",
+						cursor: !isDetailsPage ? "pointer" : undefined
+					}}
+					onClick={() => {
+						if (isDetailsPage) return;
+						navigate(`/status/public/${statusPage.url}/${monitor.id}`)
 					}}
 				>
 					<MonitorHeader
 						monitor={monitor}
-						statusPageUrl={statusPage.url}
 						showURL={showURL}
 						showUptime={statusPage.showUptimePercentage}
 					/>

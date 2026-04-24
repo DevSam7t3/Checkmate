@@ -256,31 +256,33 @@ export const HeaderStatusPageControls = ({
 						</Select>
 					)}
 
-					<Box
-						sx={{
-							display: "flex",
-							alignItems: "center",
-							gap: 1,
-							border: `1px solid ${theme.palette.divider}`,
-							borderRadius: 2,
-							px: 1.5,
-							py: 0.75,
-							minWidth: { xs: "100%", sm: 320 },
-						}}
-					>
-						<Search
-							size={16}
-							color={theme.palette.text.secondary}
-						/>
-						<InputBase
-							value={searchValue}
-							onChange={(event) => handleSearchChange(event.target.value)}
-							placeholder={t("components.headerStatusPageControls.searchPlaceholder", {
-								defaultValue: "Search monitors...",
-							})}
-							sx={{ width: "100%", fontSize: "0.9rem" }}
-						/>
-					</Box>
+					{onSearchChange && (
+						<Box
+							sx={{
+								display: "flex",
+								alignItems: "center",
+								gap: 1,
+								border: `1px solid ${theme.palette.divider}`,
+								borderRadius: 2,
+								px: 1.5,
+								py: 0.75,
+								minWidth: { xs: "100%", sm: 320 },
+							}}
+						>
+							<Search
+								size={16}
+								color={theme.palette.text.secondary}
+							/>
+							<InputBase
+								value={searchValue}
+								onChange={(event) => handleSearchChange(event.target.value)}
+								placeholder={t("components.headerStatusPageControls.searchPlaceholder", {
+									defaultValue: "Search monitors...",
+								})}
+								sx={{ width: "100%", fontSize: "0.9rem" }}
+							/>
+						</Box>
+					)}
 
 					{isAdmin && (
 						<Button

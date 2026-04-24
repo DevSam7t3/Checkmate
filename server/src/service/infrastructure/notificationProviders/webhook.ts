@@ -79,7 +79,8 @@ export class WebhookProvider extends NotificationProvider {
 
 		// Return webhook payload with both text and structured data
 		return {
-			text: lines.join("\n"),
+			// text: lines.join("\n"),
+			...message,
 			severity: message.severity,
 			type: message.type,
 			monitor: {
